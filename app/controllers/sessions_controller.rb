@@ -3,12 +3,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:name] != "" || params[:name] != nil
+    if params[:name] == "" || params[:name] == nil
+      redirect_to '/sessions/new'
+    else
       session[:name] = params[:name]
       redirect_to '/'
-    else
-      binding.pry
-      redirect_to '/sessions/new'
     end
   end
 
